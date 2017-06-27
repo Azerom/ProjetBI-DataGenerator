@@ -28,12 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.m_generate = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // m_generate
+            // 
+            this.m_generate.Location = new System.Drawing.Point(109, 226);
+            this.m_generate.Name = "m_generate";
+            this.m_generate.Size = new System.Drawing.Size(75, 23);
+            this.m_generate.TabIndex = 0;
+            this.m_generate.Text = "button1";
+            this.m_generate.UseVisualStyleBackColor = true;
+            this.m_generate.Click += new System.EventHandler(this.generateClick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(12, 12);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(260, 208);
+            this.textBox1.TabIndex = 2;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.m_generate);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button m_generate;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
