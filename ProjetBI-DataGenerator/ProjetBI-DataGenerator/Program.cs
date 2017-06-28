@@ -10,7 +10,8 @@ namespace ProjetBI_DataGenerator
 {
     static class Program
     {
-        static public Config config = Config.LoadConfig(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\config.json");
+        static public string path = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+        static public Config config = Config.LoadConfig(path + @"\config.json");
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
@@ -19,10 +20,8 @@ namespace ProjetBI_DataGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-
-
-            
+            Application.Run(new MainForm());
+           
         }
     }
 }

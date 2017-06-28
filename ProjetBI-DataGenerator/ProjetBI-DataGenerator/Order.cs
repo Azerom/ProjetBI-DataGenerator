@@ -8,6 +8,10 @@ namespace ProjetBI_DataGenerator
 {
     class Order
     {
+        private static int count = 0;
+
+        public int ID { get; set; }
+
         private OrderPart[] parts;
 
         public string Country { get; set; }
@@ -37,6 +41,9 @@ namespace ProjetBI_DataGenerator
 
             Country = countryAndShipping[0];
             Shipping = countryAndShipping[1];
+
+            this.ID = Order.Count;
+            Order.Count++;
         }
 
         public OrderPart[] Parts
@@ -51,6 +58,8 @@ namespace ProjetBI_DataGenerator
                 parts = value;
             }
         }
+
+        public static int Count { get => count; set => count = value; }
 
         public override string ToString()
         {
