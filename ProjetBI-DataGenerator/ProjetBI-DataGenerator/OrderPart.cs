@@ -23,7 +23,7 @@ namespace ProjetBI_DataGenerator
 
         public string Country { get; set; }
 
-        public OrderPart(Config config)
+        public OrderPart(RandomPicker config)
         {
             this.ProductType = config.Types;
             this.Color = config.Colors;

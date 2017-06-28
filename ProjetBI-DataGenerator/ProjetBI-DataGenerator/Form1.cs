@@ -29,7 +29,9 @@ namespace ProjetBI_DataGenerator
             String[,] countries = {{"Royaume-Uni", "Camion"}, {"Slovaquie", "Camion"}, {"Slovénie", "Camion"}, {"Suède", "Camion"}, {"USA", "Avion"}, {"Canada", "Avion"}, {"Mexique", "Avion"}, {"Japon", "Bateau"}, {"Chine", "Avion"}, {"Afrique du sud",  "Bateau"}};
             Config config = new Config(types, colors, variants, textures, conditionings, countries);
 
-            Order order = new Order(config);
+            RandomPicker randPick = new RandomPicker(config);
+
+            Order order = new Order(randPick);
 
             textBox1.Text = order.ToString();
         }

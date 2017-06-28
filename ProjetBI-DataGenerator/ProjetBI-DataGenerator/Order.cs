@@ -21,7 +21,7 @@ namespace ProjetBI_DataGenerator
             Shipping = shipping;
         }
 
-        public Order(Config conf)
+        public Order(RandomPicker conf)
         {
             Random rand = new Random();
             int size = rand.Next(1, 16);

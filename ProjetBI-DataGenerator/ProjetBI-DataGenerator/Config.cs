@@ -12,69 +12,24 @@ namespace ProjetBI_DataGenerator
     class Config
     {
         private string[] types, colors, variants, textures, conditionings;
-        private Random random = new Random();
         private string[,] countries;
 
 
         public Config(string[] types, string[] colors, string[] variants, string[] textures, string[] conditionings, string[,] countries)
         {
-            this.types = types;
-            this.colors = colors;
-            this.variants = variants;
-            this.textures = textures;
-            this.conditionings = conditionings;
-            this.countries = countries;
+            this.Types = types;
+            this.Colors = colors;
+            this.Variants = variants;
+            this.Textures = textures;
+            this.Conditionings = conditionings;
+            this.Countries = countries;
         }
 
-        public string Colors
-        {
-            get
-            {
-                return colors[random.Next(colors.Length)];
-            }
-        }
-
-        public string Conditionings
-        {
-            get
-            {
-                return conditionings[random.Next(conditionings.Length)];
-            }
-        }
-
-        public string Textures
-        {
-            get
-            {
-                return textures[random.Next(textures.Length)];
-            }
-        }
-
-        public string Types
-        {
-            get
-            {
-                return types[random.Next(types.Length)];
-            }
-        }
-
-        public string Variants
-        {
-            get
-            {
-                return variants[random.Next(variants.Length)];
-            }
-        }
-
-        public string[] CountriesAndShipping
-        {
-            
-            get
-            {
-                int rand = random.Next(countries.GetLength(0));
-                string[] values = { countries[rand, 0], countries[rand, 1] };
-                return values;
-            }
-        }
+        public string[] Types { get => types; set => types = value; }
+        public string[] Colors { get => colors; set => colors = value; }
+        public string[] Variants { get => variants; set => variants = value; }
+        public string[] Textures { get => textures; set => textures = value; }
+        public string[] Conditionings { get => conditionings; set => conditionings = value; }
+        public string[,] Countries { get => countries; set => countries = value; }
     }
 }
