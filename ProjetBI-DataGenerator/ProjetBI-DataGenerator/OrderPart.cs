@@ -23,13 +23,13 @@ namespace ProjetBI_DataGenerator
 
         public string Country { get; set; }
 
-        public OrderPart(RandomPicker config)
+        public OrderPart(RandomPicker picker)
         {
-            this.ProductType = config.Types;
-            this.Color = config.Colors;
-            this.Variant = config.Variants;
-            this.Texture = config.Textures;
-            this.Conditioning = config.Conditionings;
+            this.ProductType = picker.Types;
+            this.Color = picker.Colors;
+            this.Variant = picker.Variants;
+            this.Texture = picker.Textures;
+            this.Conditioning = picker.Conditionings;
         }
 
         public string toString()

@@ -14,6 +14,8 @@ namespace ProjetBI_DataGenerator
         private string[] types, colors, variants, textures, conditionings;
         private string[,] countries;
 
+        public int MaxOrderParts { get; set; }
+
 
         public Config(string[] types, string[] colors, string[] variants, string[] textures, string[] conditionings, string[,] countries)
         {

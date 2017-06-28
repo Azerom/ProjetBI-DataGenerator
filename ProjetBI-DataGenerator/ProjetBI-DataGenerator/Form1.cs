@@ -14,7 +14,7 @@ namespace ProjetBI_DataGenerator
 {
     public partial class Form1 : Form
     {
-        Config config = Config.LoadConfig(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\config.json");
+        
         public Form1()
         {
             InitializeComponent();
@@ -25,11 +25,11 @@ namespace ProjetBI_DataGenerator
         private void generateClick(object sender, EventArgs e)
         {
 
-            RandomPicker randPick = new RandomPicker(config);
+            RandomPicker randPick = new RandomPicker(Program.config);
             
             Order order = new Order(randPick);
 
-            textBox1.Text = order.ToString();
+            m_log.Text = order.ToString();
 
             m_export.Enabled = true;
             

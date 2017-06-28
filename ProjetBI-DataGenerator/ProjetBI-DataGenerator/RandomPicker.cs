@@ -8,6 +8,8 @@ namespace ProjetBI_DataGenerator
 {
     class RandomPicker
     {
+        private ConfElem[] types, colors, variants, textures, conditionings;
+
         private Random random;
         public Config Conf { get; set; }
 
@@ -15,17 +17,52 @@ namespace ProjetBI_DataGenerator
         {
             Conf = conf;
             random = new Random();
+
+            this.types = GenerateWeight(Conf.Types);
+            this.colors = GenerateWeight(Conf.Colors);
+            this.variants = GenerateWeight(Conf.Variants);
+            this.textures = GenerateWeight(Conf.Textures);
+            this.conditionings = GenerateWeight(Conf.Conditionings);
+        }
+
+        private ConfElem[] GenerateWeight(string[] array)
+        {
+            ConfElem[] elem = new ConfElem[array.Length];
+            int i = 0;
+            foreach (string y in array)
+            {
+                elem[i] = new ConfElem(random.Next(100), y);
+                i++;
+            }
+            return elem;
         }
 
         private T GetRandFromArray<T>(T[] array)
         {
             return array[random.Next(array.Length)];
         }
+
+        private string GetRandWeight(ConfElem[] array)
+        {
+            string elem = " ";
+            
+
+            while(elem == " ")
+            {
+                int rand = random.Next(100);
+                int index = random.Next(array.Length);
+
+                if (array[index].Weight >= rand)
+                    elem = array[index].Value;
+            }
+            return elem;
+        }
+
         public string Colors
         {
             get
             {
-                return GetRandFromArray(Conf.Colors);
+                return GetRandWeight(this.colors);
             }
         }
 
@@ -33,7 +70,7 @@ namespace ProjetBI_DataGenerator
         {
             get
             {
-                return GetRandFromArray(Conf.Conditionings);
+                return GetRandWeight(this.conditionings);
             }
         }
 
@@ -41,7 +78,7 @@ namespace ProjetBI_DataGenerator
         {
             get
             {
-                return GetRandFromArray(Conf.Textures);
+                return GetRandWeight(this.textures);
             }
         }
 
@@ -49,7 +86,7 @@ namespace ProjetBI_DataGenerator
         {
             get
             {
-                return GetRandFromArray(Conf.Types);
+                return GetRandWeight(this.types);
             }
         }
 
@@ -57,7 +94,7 @@ namespace ProjetBI_DataGenerator
         {
             get
             {
-                return GetRandFromArray(Conf.Variants);
+                return GetRandWeight(this.variants);
             }
         }
 

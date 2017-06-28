@@ -24,7 +24,7 @@ namespace ProjetBI_DataGenerator
         public Order(RandomPicker conf)
         {
             Random rand = new Random();
-            int size = rand.Next(1, 16);
+            int size = rand.Next(1, Program.config.MaxOrderParts + 1 );
 
             parts = new OrderPart[size];
 

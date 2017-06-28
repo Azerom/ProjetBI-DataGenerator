@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.m_generate = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.m_log = new System.Windows.Forms.TextBox();
             this.m_export = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -43,14 +43,14 @@
             this.m_generate.UseVisualStyleBackColor = true;
             this.m_generate.Click += new System.EventHandler(this.generateClick);
             // 
-            // textBox1
+            // m_log
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(260, 208);
-            this.textBox1.TabIndex = 2;
+            this.m_log.Enabled = false;
+            this.m_log.Location = new System.Drawing.Point(12, 12);
+            this.m_log.Multiline = true;
+            this.m_log.Name = "m_log";
+            this.m_log.Size = new System.Drawing.Size(260, 208);
+            this.m_log.TabIndex = 2;
             // 
             // m_export
             // 
@@ -69,7 +69,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.m_export);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.m_log);
             this.Controls.Add(this.m_generate);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -81,7 +81,7 @@
         #endregion
 
         private System.Windows.Forms.Button m_generate;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox m_log;
         private System.Windows.Forms.Button m_export;
     }
 }
