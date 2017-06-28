@@ -25,6 +25,17 @@ namespace ProjetBI_DataGenerator
             this.Countries = countries;
         }
 
+        public static Config LoadConfig(string path)
+        {
+            string json = System.IO.File.ReadAllText(path);
+            return JsonConvert.DeserializeObject<Config>(json);
+        }
+
+        public string Tojson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
         public string[] Types { get => types; set => types = value; }
         public string[] Colors { get => colors; set => colors = value; }
         public string[] Variants { get => variants; set => variants = value; }

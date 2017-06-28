@@ -1,0 +1,35 @@
+﻿{
+	"Types": [
+		"Acidofilo",
+		"Bouteille cola",
+		"Brazil pik",
+		"Color Schtroummpf pik",
+		"Langues acides",
+		"London pik"],
+	"Colors": [
+		"Rouge",
+		"Orange",
+		"Jaune"],
+	"Variants":[
+		"Acide",
+		"Sucré",
+		"Gélifié"],
+	"Textures": [
+		"Mou",
+		"Dur"],
+	"Conditionings": [
+		"Sachet",
+		"Boite",
+		"échantillon"],
+	"Countries":[
+		["Royaume-Uni","Camion"],
+		["Slovaquie","Camion"],
+		["Slovénie","Camion"],
+		["Suède","Camion"],
+		["USA","Avion"],
+		["Canada","Avion"],
+		["Mexique","Avion"],
+		["Japon","Bateau"],
+		["Chine","Avion"],
+		["Afrique du sud","Bateau"]]
+}
