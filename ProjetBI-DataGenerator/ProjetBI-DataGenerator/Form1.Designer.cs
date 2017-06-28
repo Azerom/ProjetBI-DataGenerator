@@ -30,15 +30,16 @@
         {
             this.m_generate = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.m_export = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // m_generate
             // 
-            this.m_generate.Location = new System.Drawing.Point(109, 226);
+            this.m_generate.Location = new System.Drawing.Point(12, 226);
             this.m_generate.Name = "m_generate";
-            this.m_generate.Size = new System.Drawing.Size(75, 23);
+            this.m_generate.Size = new System.Drawing.Size(172, 23);
             this.m_generate.TabIndex = 0;
-            this.m_generate.Text = "button1";
+            this.m_generate.Text = "Generate 1 command";
             this.m_generate.UseVisualStyleBackColor = true;
             this.m_generate.Click += new System.EventHandler(this.generateClick);
             // 
@@ -51,11 +52,23 @@
             this.textBox1.Size = new System.Drawing.Size(260, 208);
             this.textBox1.TabIndex = 2;
             // 
+            // m_export
+            // 
+            this.m_export.Enabled = false;
+            this.m_export.Location = new System.Drawing.Point(191, 227);
+            this.m_export.Name = "m_export";
+            this.m_export.Size = new System.Drawing.Size(75, 23);
+            this.m_export.TabIndex = 3;
+            this.m_export.Text = "Export to CSV";
+            this.m_export.UseVisualStyleBackColor = true;
+            this.m_export.Click += new System.EventHandler(this.exportClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.m_export);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.m_generate);
             this.Name = "Form1";
@@ -69,6 +82,7 @@
 
         private System.Windows.Forms.Button m_generate;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button m_export;
     }
 }
 
