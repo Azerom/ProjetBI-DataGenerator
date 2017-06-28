@@ -13,15 +13,17 @@ namespace ProjetBI_DataGenerator
     {
         private string[] types, colors, variants, textures, conditionings;
         private Random random = new Random();
+        private string[,] countries;
 
 
-        public Config(string[] types, string[] colors, string[] variants, string[] textures, string[] conditionings)
+        public Config(string[] types, string[] colors, string[] variants, string[] textures, string[] conditionings, string[,] countries)
         {
             this.types = types;
             this.colors = colors;
             this.variants = variants;
             this.textures = textures;
             this.conditionings = conditionings;
+            this.countries = countries;
         }
 
         public string Colors
@@ -61,6 +63,17 @@ namespace ProjetBI_DataGenerator
             get
             {
                 return variants[random.Next(variants.Length)];
+            }
+        }
+
+        public string[] CountriesAndShipping
+        {
+            
+            get
+            {
+                int rand = random.Next(countries.GetLength(0));
+                string[] values = { countries[rand, 0], countries[rand, 1] };
+                return values;
             }
         }
     }

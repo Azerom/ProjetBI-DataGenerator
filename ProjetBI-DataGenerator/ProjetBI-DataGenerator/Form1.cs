@@ -26,7 +26,8 @@ namespace ProjetBI_DataGenerator
             String[] variants = { "Acide", "Sucré", "Gélifié" };
             String[] textures = { "Mou", "Dur" };
             String[] conditionings = { "Sachet", "Boite", "échantillon" };
-            Config config = new Config(types, colors, variants, textures, conditionings);
+            String[,] countries = {{"Royaume-Uni", "Camion"}, {"Slovaquie", "Camion"}, {"Slovénie", "Camion"}, {"Suède", "Camion"}, {"USA", "Avion"}, {"Canada", "Avion"}, {"Mexique", "Avion"}, {"Japon", "Bateau"}, {"Chine", "Avion"}, {"Afrique du sud",  "Bateau"}};
+            Config config = new Config(types, colors, variants, textures, conditionings, countries);
 
             Order order = new Order(config);
 

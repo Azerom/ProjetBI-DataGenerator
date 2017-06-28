@@ -10,9 +10,15 @@ namespace ProjetBI_DataGenerator
     {
         private OrderPart[] parts;
 
-        public Order(OrderPart[] parts)
+        public string Country { get; set; }
+
+        public string Shipping { get; set; }
+
+        public Order(OrderPart[] parts, string country, string shipping)
         {
-            this.parts = parts;
+            Parts = parts;
+            Country = country;
+            Shipping = shipping;
         }
 
         public Order(Config conf)
@@ -26,6 +32,11 @@ namespace ProjetBI_DataGenerator
             {
                 parts[i] = new OrderPart(conf);
             }
+
+            string[] countryAndShipping = conf.CountriesAndShipping;
+
+            Country = countryAndShipping[0];
+            Shipping = countryAndShipping[1];
         }
 
         public OrderPart[] Parts
@@ -43,12 +54,13 @@ namespace ProjetBI_DataGenerator
 
         public override string ToString()
         {
-            string str = "Order :" + Environment.NewLine;
+            string str = "Order to " + Country + " by " + Shipping + " :" + Environment.NewLine;
 
             foreach(OrderPart part in parts)
             {
                 str += part.toString() + Environment.NewLine;
             }
+          
 
             return str;
         }
