@@ -9,7 +9,7 @@ namespace ProjetBI_DataGenerator
 {
     class OrderPart
     {
-       
+        private static Random rand = new Random();
         public string ProductType { get; set; }
 
         public string Color { get; set; }
@@ -26,6 +26,8 @@ namespace ProjetBI_DataGenerator
 
         public float Price { get; set; }
 
+        public int Quantity { get; set; }
+
         public OrderPart(RandomPicker picker)
         {
             this.ProductType = picker.Types;
@@ -33,10 +35,8 @@ namespace ProjetBI_DataGenerator
             this.Variant = picker.Variants;
             this.Texture = picker.Textures;
             this.Conditioning = picker.Conditionings;
-
+            this.Quantity = rand.Next(1 ,Settings.Default.MawQuantityPerPart + 1);
             this.Price = picker.GetPrice(this.ProductType, this.Conditioning);
-
-
         }
 
         public string toString()

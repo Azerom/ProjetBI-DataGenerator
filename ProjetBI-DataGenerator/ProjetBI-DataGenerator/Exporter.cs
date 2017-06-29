@@ -34,7 +34,7 @@ namespace ProjetBI_DataGenerator
                     //Write a first line as a header
                     if (header)
                     {
-                        partFile.WriteLine("order_ID;type;color;variant;texture;conditioning;price");
+                        partFile.WriteLine("order_ID;type;color;variant;texture;conditioning;price;quantity");
                         orderFile.WriteLine("id;country;shipping;date");
                     }
 
@@ -55,7 +55,15 @@ namespace ProjetBI_DataGenerator
                         foreach (OrderPart part in order.Parts)
                         {
                             //Prepare the line
-                            var newPartLine = string.Format("{0};{1};{2};{3};{4};{5};{6}", order.ID, part.ProductType, part.Color, part.Variant, part.Texture, part.Conditioning, part.Price);
+                            var newPartLine = string.Format("{0};{1};{2};{3};{4};{5};{6};{7}", 
+                                order.ID, 
+                                part.ProductType, 
+                                part.Color, 
+                                part.Variant, 
+                                part.Texture, 
+                                part.Conditioning, 
+                                part.Price,
+                                part.Quantity);
 
                             //Write the line
                             partFile.WriteLine(newPartLine);
