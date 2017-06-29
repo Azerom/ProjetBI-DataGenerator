@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace ProjetBI_DataGenerator
     class RandomPicker
     {
         private ConfElem[] types, colors, variants, textures, conditionings, countries;
+
+        Dictionary<string, float[]> prices;
 
         private Random random;
 
@@ -24,6 +27,27 @@ namespace ProjetBI_DataGenerator
             this.textures = GenerateWeight(Settings.Default.Textures.Split(','));
             this.conditionings = GenerateWeight(Settings.Default.Conditioning.Split(','));
             this.countries = GenerateWeight(Settings.Default.Countries.Split(';'));
+
+            //-----PRICE----
+
+            string[] pricesList = Settings.Default.Types.Split(',');
+
+            this.prices = new Dictionary<string, float[]>();
+            
+            foreach (string prices in pricesList)
+            {
+                string[] temp = prices.Split(';');
+
+                float[] tempArray = {
+                    float.Parse(temp[1], CultureInfo.InvariantCulture.NumberFormat),
+                    float.Parse(temp[2], CultureInfo.InvariantCulture.NumberFormat),
+                    float.Parse(temp[3], CultureInfo.InvariantCulture.NumberFormat) };
+                this.prices[temp[0]] = tempArray;
+                
+            }
+
+
+
         }
 
         private ConfElem[] GenerateWeight(string[] array)
@@ -48,6 +72,12 @@ namespace ProjetBI_DataGenerator
         private T GetRandFromArray<T>(T[] array)
         {
             return array[random.Next(array.Length)];
+        }
+
+        public float GetPrice(string index, string cond)
+        {
+            int condIndex = Array.IndexOf(Settings.Default.Conditioning.Split(','), cond);
+            return this.prices[index][condIndex];
         }
 
         
@@ -95,7 +125,7 @@ namespace ProjetBI_DataGenerator
         {
             get
             {
-                return GetRandWeight(this.types);
+                return GetRandWeight(this.types).Split(';')[0];
             }
         }
 

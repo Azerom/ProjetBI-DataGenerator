@@ -25,7 +25,7 @@ namespace ProjetBI_DataGenerator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"Acidofilo,Bouteille cola,Brazil pik,Color Schtroummpf pik,Langues acides,London pik,Miami pik,Pasta Basta,Pasta frutta,Sour snup,Dragibus,Carensac,Fraizibus,Grain de millet,Starmint,Florent violette,Kimono,Pain Zan,Rotella,Zanoïd,Fraise tagada,Croco,Chamallows,Polka,Banane,Ourson,Filament")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"Acidofilo;2.31;3.42;0.23,Bouteille cola;2.99;4.43;0.3,Brazil pik;3.94;5.83;0.39,Color Schtroummpf pik;2.75;4.07;0.28,Langues acides;3.84;5.68;0.38,London pik;3.08;4.56;0.31,Miami pik;2.93;4.34;0.29,Pasta Basta;2.11;3.12;0.21,Pasta frutta;2.37;3.51;0.24,Sour snup;3.66;5.42;0.37,Dragibus;2.47;3.66;0.25,Carensac;2.05;3.03;0.21,Fraizibus;3.92;5.8;0.39,Grain de millet;2.16;3.2;0.22,Starmint;2.49;3.69;0.25,Florent violette;3.47;5.14;0.35,Kimono;3.92;5.8;0.39,Pain Zan;3.17;4.69;0.32,Rotella;2.27;3.36;0.23,Zanoïd;3.25;4.81;0.33,Fraise tagada;2.9;4.29;0.29,Croco;2.36;3.49;0.24,Chamallows;2.04;3.02;0.2,Polka;3.77;5.58;0.38,Banane;2.74;4.06;0.27,Ourson;3.59;5.31;0.36,Filament;3.99;5.91;0.4")]
         public string Types {
             get {
                 return ((string)(this["Types"]));

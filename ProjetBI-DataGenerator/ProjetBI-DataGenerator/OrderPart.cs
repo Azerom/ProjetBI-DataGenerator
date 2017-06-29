@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetBI_DataGenerator.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace ProjetBI_DataGenerator
 
         public string Country { get; set; }
 
+        public float Price { get; set; }
+
         public OrderPart(RandomPicker picker)
         {
             this.ProductType = picker.Types;
@@ -30,6 +33,10 @@ namespace ProjetBI_DataGenerator
             this.Variant = picker.Variants;
             this.Texture = picker.Textures;
             this.Conditioning = picker.Conditionings;
+
+            this.Price = picker.GetPrice(this.ProductType, this.Conditioning);
+
+
         }
 
         public string toString()
