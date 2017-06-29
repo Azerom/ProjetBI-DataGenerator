@@ -11,7 +11,7 @@ namespace ProjetBI_DataGenerator
     {
         private static int count = 0;
 
-        public int ID { get; set; }
+        public Guid ID { get; set; }
 
         private OrderPart[] parts;
 
@@ -48,7 +48,7 @@ namespace ProjetBI_DataGenerator
 
             Date = conf.RandomDay();
 
-            this.ID = Order.Count;
+            this.ID = Guid.NewGuid();
             Order.Count++;
         }
 

@@ -28,6 +28,8 @@ namespace ProjetBI_DataGenerator
 
         public int Quantity { get; set; }
 
+        public Guid ID { get; set; }
+
         public OrderPart(RandomPicker picker)
         {
             this.ProductType = picker.Types;
@@ -37,6 +39,7 @@ namespace ProjetBI_DataGenerator
             this.Conditioning = picker.Conditionings;
             this.Quantity = rand.Next(1 ,Settings.Default.MawQuantityPerPart + 1);
             this.Price = picker.GetPrice(this.ProductType, this.Conditioning);
+            this.ID = Guid.NewGuid();
         }
 
         public string toString()

@@ -25,7 +25,7 @@ namespace ProjetBI_DataGenerator
                 File.Delete(partCSVPath);
 
                 //ID use to display progress
-                int lastId = -1000;
+                int count = 0;
 
                 //Opening the CSV
                 using (StreamWriter orderFile = new StreamWriter(File.Open(orderCSVPath, FileMode.OpenOrCreate), Encoding.UTF8))
@@ -34,7 +34,7 @@ namespace ProjetBI_DataGenerator
                     //Write a first line as a header
                     if (header)
                     {
-                        partFile.WriteLine("order_ID;type;color;variant;texture;conditioning;price;quantity");
+                        partFile.WriteLine("id;order_ID;type;color;variant;texture;conditioning;price;quantity");
                         orderFile.WriteLine("id;country;shipping;date");
                     }
 
@@ -43,20 +43,17 @@ namespace ProjetBI_DataGenerator
                     {
                         Order order = new Order(randPick);
 
-                        //If we have generate 1000 order since last log, make a log
-                        if (order.ID >= lastId + 1000)
-                        {
 
-                            form.AddLog("Order n° : " + order.ID.ToString() + Environment.NewLine);
-                            lastId = order.ID;
-                        }
+                            
+
 
                         //Foreach part in the active order
                         foreach (OrderPart part in order.Parts)
                         {
                             //Prepare the line
-                            var newPartLine = string.Format("{0};{1};{2};{3};{4};{5};{6};{7}", 
-                                order.ID, 
+                            var newPartLine = string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8}", 
+                                part.ID.ToString("N"),
+                                order.ID.ToString("N"), 
                                 part.ProductType, 
                                 part.Color, 
                                 part.Variant, 
@@ -73,7 +70,11 @@ namespace ProjetBI_DataGenerator
                         partFile.Flush();
 
                         //Prepare and write the line in the order file
-                        var newCommandLine = string.Format("{0};{1};{2};{3}", order.ID, order.Country, order.Shipping, order.Date.ToShortDateString());
+                        var newCommandLine = string.Format("{0};{1};{2};{3}", 
+                            order.ID.ToString("N"), 
+                            order.Country, 
+                            order.Shipping, 
+                            order.Date.ToShortDateString());
                         orderFile.WriteLine(newCommandLine);
                         //Clean buffer memory
                         orderFile.Flush();
