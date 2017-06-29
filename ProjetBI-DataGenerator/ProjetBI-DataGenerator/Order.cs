@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetBI_DataGenerator.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace ProjetBI_DataGenerator
         public Order(RandomPicker conf)
         {
             Random rand = new Random();
-            int size = rand.Next(1, Program.config.MaxOrderParts + 1 );
+            int size = rand.Next(1, Settings.Default.MaxOrderParts + 1 );
 
             parts = new OrderPart[size];
 
@@ -75,3 +76,5 @@ namespace ProjetBI_DataGenerator
         }
     }
 }
+
+

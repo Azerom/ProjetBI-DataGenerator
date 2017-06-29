@@ -11,7 +11,6 @@ namespace ProjetBI_DataGenerator
     static class Program
     {
         static public string path = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-        static public Config config = Config.LoadConfig(path + @"\config.json");
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>

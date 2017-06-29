@@ -1,7 +1,33 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ProjetBI_DataGenerator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Types" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Acidofilo,Bouteille cola,Brazil pik,Color Schtroummpf pik,Langues acides,London pik,Miami pik,Pasta Basta,Pasta frutta,Sour snup,Dragibus,Carensac,Fraizibus,Grain de millet,Starmint,Florent violette,Kimono,Pain Zan,Rotella,Zanoïd,Fraise tagada,Croco,Chamallows,Polka,Banane,Ourson,Filament</Value>
+    </Setting>
+    <Setting Name="Colors" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Rouge,Orange,Jaune,Vert,Bleu,Violet,Noir,Marron</Value>
+    </Setting>
+    <Setting Name="Variants" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Acide,Sucré,Gélifié</Value>
+    </Setting>
+    <Setting Name="Textures" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Mou,Dur</Value>
+    </Setting>
+    <Setting Name="Conditioning" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Sachet,Boite,échantillon</Value>
+    </Setting>
+    <Setting Name="Countries" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Allemagne,Camion;Autriche,Camion;Belgique,Camion;Bulgarie,Camion;Chypre,Camion;Croatie,Camion;Danemark,Camion;Espagne,Camion;Estonie,Camion;Finlande,Camion;France,Camion;Grèce,Camion;Hongrie,Camion;Irelande,Camion;Italie,Camion;Lettonie,Camion;Lituanie,Camion;Luxembourg,Camion;Malte,Camion;Pays-Bas,Camion;Pologne,Camion;Portugal,Camion;République tchèque,Camion;Roumanie,Camion;Royaume-Uni,Camion;Slovaquie,Camion;Slovénie,Camion;Suède,Camion;USA,Avion;Canada,Avion;Mexique,Avion;Japon,Bateau;Chine,Avion;Afrique du sud,Bateau</Value>
+    </Setting>
+    <Setting Name="PartCSVPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\part.csv</Value>
+    </Setting>
+    <Setting Name="OrderCSVPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\order.csv</Value>
+    </Setting>
+    <Setting Name="MaxOrderParts" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">14</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

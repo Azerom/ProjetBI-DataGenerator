@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ProjetBI_DataGenerator.Properties;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,21 +10,20 @@ namespace ProjetBI_DataGenerator
 {
     class RandomPicker
     {
-        private ConfElem[] types, colors, variants, textures, conditionings;
+        private ConfElem[] types, colors, variants, textures, conditionings, countries;
 
         private Random random;
-        public Config Conf { get; set; }
 
-        public RandomPicker(Config conf)
+        public RandomPicker()
         {
-            Conf = conf;
-            random = new Random();
+            this.random = new Random();
 
-            this.types = GenerateWeight(Conf.Types);
-            this.colors = GenerateWeight(Conf.Colors);
-            this.variants = GenerateWeight(Conf.Variants);
-            this.textures = GenerateWeight(Conf.Textures);
-            this.conditionings = GenerateWeight(Conf.Conditionings);
+            this.types = GenerateWeight(Settings.Default.Types.Split(','));
+            this.colors = GenerateWeight(Settings.Default.Colors.Split(','));
+            this.variants = GenerateWeight(Settings.Default.Variants.Split(','));
+            this.textures = GenerateWeight(Settings.Default.Textures.Split(','));
+            this.conditionings = GenerateWeight(Settings.Default.Conditioning.Split(','));
+            this.countries = GenerateWeight(Settings.Default.Countries.Split(';'));
         }
 
         private ConfElem[] GenerateWeight(string[] array)
@@ -103,9 +104,7 @@ namespace ProjetBI_DataGenerator
 
             get
             {
-                int rand = random.Next(Conf.Countries.GetLength(0));
-                string[] values = { Conf.Countries[rand, 0], Conf.Countries[rand, 1] };
-                return values;
+                return GetRandWeight(this.countries).Split(',');
             }
         }
     }
