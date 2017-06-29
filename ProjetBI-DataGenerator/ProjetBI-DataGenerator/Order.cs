@@ -19,6 +19,9 @@ namespace ProjetBI_DataGenerator
 
         public string Shipping { get; set; }
 
+        public DateTime Date { get; set; }
+
+
         public Order(OrderPart[] parts, string country, string shipping)
         {
             Parts = parts;
@@ -42,6 +45,8 @@ namespace ProjetBI_DataGenerator
 
             Country = countryAndShipping[0];
             Shipping = countryAndShipping[1];
+
+            Date = conf.RandomDay();
 
             this.ID = Order.Count;
             Order.Count++;

@@ -38,11 +38,19 @@ namespace ProjetBI_DataGenerator
             return elem;
         }
 
+        public DateTime RandomDay()
+        {
+            DateTime start = Settings.Default.StartDate;
+            int range = (DateTime.Today - start).Days;
+            return start.AddDays(random.Next(range));
+        }
+
         private T GetRandFromArray<T>(T[] array)
         {
             return array[random.Next(array.Length)];
         }
 
+        
         private string GetRandWeight(ConfElem[] array)
         {
             string elem = " ";

@@ -103,5 +103,14 @@ namespace ProjetBI_DataGenerator.Properties {
                 return ((int)(this["MaxOrderParts"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2017-05-01")]
+        public global::System.DateTime StartDate {
+            get {
+                return ((global::System.DateTime)(this["StartDate"]));
+            }
+        }
     }
 }
