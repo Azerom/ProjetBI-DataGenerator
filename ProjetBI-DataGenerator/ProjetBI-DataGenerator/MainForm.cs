@@ -27,11 +27,8 @@ namespace ProjetBI_DataGenerator
         {
             RandomPicker randPick = new RandomPicker();
 
-            Exporter.toCSV(randPick, m_checkHeader.Checked);
-
-
-            //after your loop
-            MessageBox.Show("Finish");
+            if(Exporter.toCSV(randPick, m_checkHeader.Checked))
+                MessageBox.Show("Finish");
         }
 
         private void m_CloseClick(object sender, EventArgs e)
