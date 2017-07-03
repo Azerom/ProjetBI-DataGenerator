@@ -1,4 +1,5 @@
-﻿using ProjetBI_DataGenerator.Properties;
+﻿using ProjetBI_DataGenerator.Model;
+using ProjetBI_DataGenerator.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,23 @@ namespace ProjetBI_DataGenerator
 
         private void exportClick(object sender, EventArgs e)
         {
+            Dictionary<string, object>[] ShiptestData = new Dictionary<string, object>[1];
+            ShiptestData[0] = new Dictionary<string, object>();
+            ShiptestData[0].Add("Lib", "TestLib");
+            ShiptestData[0].Add("BoxCapacity", 42);
+            ShiptestData[0].Add("Capacity", 43);
+
+            Shipping[] ships = Shipping.Import(ShiptestData);
+
+            Dictionary<string, object>[] CountrytestData = new Dictionary<string, object>[1];
+            CountrytestData[0] = new Dictionary<string, object>();
+            CountrytestData[0].Add("Lib", "TestLib");
+            CountrytestData[0].Add("Shipping", ships[0]);
+
+            Country[] country = Country.Import(CountrytestData);
+
+            MessageBox.Show(country[0].ToSQL());
+
             RandomPicker randPick = new RandomPicker();
 
             if(Exporter.toCSV(randPick, m_checkHeader.Checked))
