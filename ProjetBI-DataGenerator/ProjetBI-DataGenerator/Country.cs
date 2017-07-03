@@ -11,11 +11,11 @@ namespace ProjetBI_DataGenerator
     {
         public int ID { get; set; }
         public string Lib { get; set; }
-        public Shipping Ship { get; set; }
+        public int Ship { get; set; }
 
         private static int count = 0;
 
-        public Country(string lib, Shipping ship)
+        public Country(string lib, int ship)
         {
             this.ID = count;
             count++;
@@ -29,7 +29,7 @@ namespace ProjetBI_DataGenerator
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Country((string)data["Lib"], (Shipping)data["Shipping"]);
+                output[i] = new Country((string)data["Lib"], (int)data["Shipping"]);
                 i++;
             }
             return output;
@@ -37,12 +37,11 @@ namespace ProjetBI_DataGenerator
 
         public override string ToSQL()
         {
-            return this.Ship.ToSQL() + "\n " +
-                "INSERT INTO COUNTRY " +
+            return "INSERT INTO COUNTRY " +
                 "(ID, LIB, ID_SHIPPING) VALUES (" +
                 this.ID + ", " +
                 this.Lib + ", " +
-                this.Ship.ID + ");";
+                this.Ship + ");";
         }
     }
 }

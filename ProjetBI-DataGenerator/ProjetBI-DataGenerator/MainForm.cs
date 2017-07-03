@@ -37,7 +37,7 @@ namespace ProjetBI_DataGenerator
             Dictionary<string, object>[] CountrytestData = new Dictionary<string, object>[1];
             CountrytestData[0] = new Dictionary<string, object>();
             CountrytestData[0].Add("Lib", "TestLib");
-            CountrytestData[0].Add("Shipping", ships[0]);
+            CountrytestData[0].Add("Shipping", 0);
 
             Country[] country = Country.Import(CountrytestData);
 
