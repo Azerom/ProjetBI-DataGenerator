@@ -31,7 +31,10 @@ namespace ProjetBI_DataGenerator.Model
             int i = 0;
             foreach(Dictionary<string, object> data in datas)
             {
-                output[i] = new Shipping((string)data["Lib"], (int)data["BoxCapacity"], (int)data["Capacity"]);
+                unchecked
+                {
+                    output[i] = new Shipping((string)data["Lib"], (int)(long)data["BoxCapacity"], (int)(long)data["Capacity"]);
+                }
                 i++;
             }
             return output;
@@ -40,7 +43,7 @@ namespace ProjetBI_DataGenerator.Model
         {
 
             return "INSERT INTO SHIPPING " +
-                "(ID, LIB, BOXCAPACITY, CAPACITYS) VALUES (" +
+                "(ID_SHIPPING, LIB, BOXCAPACITY, CAPACITYS) VALUES (" +
                 this.ID + ", " +
                 this.Lib + ", " +
                 this.BoxCapacity + ", " +

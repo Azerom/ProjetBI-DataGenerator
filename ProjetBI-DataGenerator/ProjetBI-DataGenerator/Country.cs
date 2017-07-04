@@ -29,7 +29,7 @@ namespace ProjetBI_DataGenerator
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Country((string)data["Lib"], (int)data["Shipping"]);
+                output[i] = new Country((string)data["Lib"], (int)(long)data["Shipping"]);
                 i++;
             }
             return output;
