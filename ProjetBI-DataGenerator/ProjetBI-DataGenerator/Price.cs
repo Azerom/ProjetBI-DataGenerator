@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace ProjetBI_DataGenerator.Model
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Price((float)data["Valeur"], (int)(long)data["ID_Packaging"], (int)(long)data["ID_Type"]);
+                output[i] = new Price((float)(double)data["Valeur"], (int)(long)data["IdPackaging"], (int)(long)data["IdType"]);
                 i++;
             }
             return output;
@@ -40,7 +41,7 @@ namespace ProjetBI_DataGenerator.Model
 
             return "INSERT INTO PRICE " +
                 "(VALEUR, ID_PACKAGING, ID_TYPE) VALUES (" +
-                this.Valeur + ", " +
+                this.Valeur.ToString("F2", CultureInfo.InvariantCulture) + ", " +
                 this.ID_Packaging + ", " +
                 this.ID_Type + ");";
         }

@@ -38,8 +38,8 @@ namespace ProjetBI_DataGenerator.Model
 
             return "INSERT INTO TEXTURE " +
                 "(ID_TEXTURE, LIB) VALUES (" +
-                this.ID + ", " +
-                this.Lib + ");";
+                this.ID + ", '" +
+                this.Lib + "');";
         }
     }
 }

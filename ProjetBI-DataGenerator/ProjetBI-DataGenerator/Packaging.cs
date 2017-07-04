@@ -31,7 +31,7 @@ namespace ProjetBI_DataGenerator.Model
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Packaging((string)data["Lib"], (int)(long)data["Quantity"], (int)(long)data["Quantity_Box"]);
+                output[i] = new Packaging((string)data["Lib"], (int)(long)data["Quantity"], (int)(long)data["QuantityBox"]);
                 i++;
             }
             return output;
@@ -41,8 +41,8 @@ namespace ProjetBI_DataGenerator.Model
 
             return "INSERT INTO PACKAGING " +
                 "(ID_PACKAGING, LIB, QUANTITY, QUANTITY_BOX) VALUES (" +
-                this.ID + ", " +
-                this.Lib + ", " +
+                this.ID + ", '" +
+                this.Lib + "', " +
                 this.Quantity + ", " +
                 this.Quantity_Box + ");";
         }

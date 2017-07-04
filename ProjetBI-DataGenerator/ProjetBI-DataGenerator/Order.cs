@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjetBI_DataGenerator.Model;
 
 namespace ProjetBI_DataGenerator
 {
@@ -15,40 +16,37 @@ namespace ProjetBI_DataGenerator
 
         private OrderPart[] parts;
 
-        public string Country { get; set; }
-
-        public string Shipping { get; set; }
+        public int Country { get; set; }
 
         public DateTime Date { get; set; }
 
+        private static Random rand = new Random();
 
-        public Order(OrderPart[] parts, string country, string shipping)
+        public Order(OrderPart[] parts, int country)
         {
             Parts = parts;
             Country = country;
-            Shipping = shipping;
         }
 
         public Order(RandomPicker conf)
         {
-            Random rand = new Random();
+            
             int size = rand.Next(1, Settings.Default.MaxOrderParts + 1 );
 
             parts = new OrderPart[size];
-
+            this.ID = Guid.NewGuid();
             for (int i = 0; i < size; i++)
             {
-                parts[i] = new OrderPart(conf);
+                parts[i] = new OrderPart(conf, this.ID);
             }
 
-            string[] countryAndShipping = conf.CountriesAndShipping;
+            Country country = (Country)conf.GetRandWeight(Program.env.Datas["Country"]);
 
-            Country = countryAndShipping[0];
-            Shipping = countryAndShipping[1];
+            Country = country.ID;
 
             Date = conf.RandomDay();
 
-            this.ID = Guid.NewGuid();
+            
             Order.Count++;
         }
 
@@ -69,7 +67,7 @@ namespace ProjetBI_DataGenerator
 
         public override string ToString()
         {
-            string str = "Order to " + Country + " by " + Shipping + " :" + Environment.NewLine;
+            string str = "Order to " + Country + " :" + Environment.NewLine;
 
             foreach(OrderPart part in parts)
             {
@@ -78,6 +76,14 @@ namespace ProjetBI_DataGenerator
           
 
             return str;
+        }
+
+        public string ToSQL()
+        {
+            return "INSERT INTO ORDERS (ID_ORDER, DATE_ORDER, ID_COUNTRY) VALUES ('" +
+                this.ID.ToString() + "', '" +
+                this.Date.ToShortDateString() + "', " +
+                this.Country + ");";
         }
     }
 }

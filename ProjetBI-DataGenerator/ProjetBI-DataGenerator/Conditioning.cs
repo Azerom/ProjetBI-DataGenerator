@@ -33,7 +33,7 @@ namespace ProjetBI_DataGenerator.Model
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Conditioning((int)(long)data["Cadence"], (int)(long)data["Delays"],(int)(long)data["ID_Packaging"]);
+                output[i] = new Conditioning((int)(long)data["Cadence"], (int)(long)data["Delays"],(int)(long)data["IdPackaging"]);
                 i++;
             }
             return output;

@@ -4,51 +4,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjetBI_DataGenerator.Model;
 
 namespace ProjetBI_DataGenerator
 {
     class OrderPart
     {
         private static Random rand = new Random();
-        public string ProductType { get; set; }
-
-        public string Color { get; set; }
-
-        public string Variant { get; set; }
-
-        public string Texture { get; set; }
-
-        public string Conditioning { get; set; }
-
-        public int Count { get; set; }
-
-        public string Country { get; set; }
-
-        public float Price { get; set; }
-
+        public Candy candy { get; set; }
+        
+       
         public int Quantity { get; set; }
 
         public Guid ID { get; set; }
 
-        public OrderPart(RandomPicker picker)
+        public Guid OrderID { get; set; }
+
+        public OrderPart(RandomPicker picker, Guid orderID)
         {
-            this.ProductType = picker.Types;
-            this.Color = picker.Colors;
-            this.Variant = picker.Variants;
-            this.Texture = picker.Textures;
-            this.Conditioning = picker.Conditionings;
+            this.candy = picker.candy;
             this.Quantity = rand.Next(1 ,Settings.Default.MawQuantityPerPart + 1);
-            this.Price = picker.GetPrice(this.ProductType, this.Conditioning);
             this.ID = Guid.NewGuid();
+            this.OrderID = orderID;
         }
 
         public string toString()
         {
-            return ProductType + " " +
-                Color + " " +
-                Variant + " " +
-                Texture + " " +
-                Conditioning;
+            return "";
+        }
+
+        public string toSQL()
+        {
+            return "INSERT INTO ORDERPART (ID_ORDERPART, QUANTITY, ID_ORDER, ID_CANDY) VALUES ('" +
+                this.ID.ToString() + "', " +
+                this.Quantity + ", '" +
+                this.OrderID.ToString() + "', " +
+                this.candy.ID + ");";
         }
 
     }

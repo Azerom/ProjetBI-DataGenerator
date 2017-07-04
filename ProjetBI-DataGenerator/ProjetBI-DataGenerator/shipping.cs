@@ -43,9 +43,9 @@ namespace ProjetBI_DataGenerator.Model
         {
 
             return "INSERT INTO SHIPPING " +
-                "(ID_SHIPPING, LIB, BOXCAPACITY, CAPACITYS) VALUES (" +
-                this.ID + ", " +
-                this.Lib + ", " +
+                "(ID_SHIPPING, LIB, BOX_CAPACITY, CAPACITYS) VALUES (" +
+                this.ID + ", '" +
+                this.Lib + "', " +
                 this.BoxCapacity + ", " +
                 this.Capacity + ");";
         }

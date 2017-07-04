@@ -10,6 +10,7 @@ namespace ProjetBI_DataGenerator
 {
     static class Program
     {
+        public static Env env = new Env(Config.Load(@"C:\Users\Azerom\Source\Repos\ProjetBI-DataGenerator\ProjetBI-DataGenerator\ProjetBI-DataGenerator\bin\Debug\config.json"));
         static public string path = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
         /// <summary>
         /// Point d'entrée principal de l'application.

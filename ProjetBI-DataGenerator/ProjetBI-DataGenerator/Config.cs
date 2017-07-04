@@ -13,7 +13,7 @@ namespace ProjetBI_DataGenerator
         private Dictionary<string, object>[] shipping, country, packaging, componentGramme, type, price;
         
         [JsonProperty]
-        private Dictionary<string, object>[] fabrication, conditionning, variant, color, texture, component;
+        private Dictionary<string, object>[] fabrication, conditioning, variant, color, texture, component;
 
         public Dictionary<string, object>[] Shipping { get => shipping; set => shipping = value; }
         public Dictionary<string, object>[] Country { get => country; set => country = value; }
@@ -22,7 +22,7 @@ namespace ProjetBI_DataGenerator
         public Dictionary<string, object>[] Type { get => type; set => type = value; }
         public Dictionary<string, object>[] Price { get => price; set => price = value; }
         public Dictionary<string, object>[] Fabrication { get => fabrication; set => fabrication = value; }
-        public Dictionary<string, object>[] Conditionning { get => conditionning; set => conditionning = value; }
+        public Dictionary<string, object>[] Conditioning { get => conditioning; set => conditioning = value; }
         public Dictionary<string, object>[] Variant { get => variant; set => variant = value; }
         public Dictionary<string, object>[] Color { get => color; set => color = value; }
         public Dictionary<string, object>[] Texture { get => texture; set => texture = value; }

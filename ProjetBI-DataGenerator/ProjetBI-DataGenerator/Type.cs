@@ -37,7 +37,7 @@ namespace ProjetBI_DataGenerator.Model
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Type((string)data["Lib"], (int)(long)data["Fabrication"], (int)(long)data["Conditioning"], (int)(long)data["Shipping"], (int)(long)data["Generale"]);
+                output[i] = new Type((string)data["Lib"], (int)(long)data["Fabrication"], (int)(long)data["Conditioning"], (int)(long)data["Shipping"], (int)(long)data["General"]);
                 i++;
             }
             return output;
@@ -45,10 +45,10 @@ namespace ProjetBI_DataGenerator.Model
         public override string ToSQL()
         {
 
-            return "INSERT INTO TYPE " +
+            return "INSERT INTO TYPECANDY " +
                 "(ID_TYPE, LIB, FABRICATION, CONDITIONING, SHIPPING, GENERALE) VALUES (" +
-                this.ID + ", " +
-                this.Lib + ", " +
+                this.ID + ", '" +
+                this.Lib + "', " +
                 this.Fabrication + ", " +
                 this.Conditioning + ", "+
                 this.Shipping + ", "+

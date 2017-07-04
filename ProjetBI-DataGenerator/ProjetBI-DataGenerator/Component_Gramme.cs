@@ -30,7 +30,7 @@ namespace ProjetBI_DataGenerator.Model
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Component_Gramme((int)(long)data["Valeur"], (int)(long)data["ID_Type"], (int)(long)data["ID_Component"]);
+                output[i] = new Component_Gramme((int)(long)data["Valeur"], (int)(long)data["IdType"], (int)(long)data["IdComponent"]);
                 i++;
             }
             return output;

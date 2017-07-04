@@ -39,10 +39,10 @@ namespace ProjetBI_DataGenerator.Model
         public override string ToSQL()
         {
 
-            return "INSERT INTO COMPONENT " +
+            return "INSERT INTO COMPONENTS " +
                 "(ID_COMPONENT, LIB, CONDITIONING, PALETTE) VALUES (" +
-                this.ID + ", " +
-                this.Lib + ", " +
+                this.ID + ", '" +
+                this.Lib + "', " +
                 this.Conditioning + ", " +
                 this.Palette + ");";
         }

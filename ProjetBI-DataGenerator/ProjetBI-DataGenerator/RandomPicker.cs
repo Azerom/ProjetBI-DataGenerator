@@ -6,48 +6,40 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjetBI_DataGenerator.Model;
 
 namespace ProjetBI_DataGenerator
 {
     class RandomPicker
     {
-        private ConfElem[] types, colors, variants, textures, conditionings, countries;
-
-        Dictionary<string, float[]> prices;
-
+        private Element[] candyVar, colors, variants, textures, conditionings, countries;
+        
         private Random random;
 
         public RandomPicker()
         {
+            Env env = Program.env;
             this.random = new Random();
 
-            this.types = GenerateWeight(Settings.Default.Types.Split(','));
-            this.colors = GenerateWeight(Settings.Default.Colors.Split(','));
-            this.variants = GenerateWeight(Settings.Default.Variants.Split(','));
-            this.textures = GenerateWeight(Settings.Default.Textures.Split(','));
-            this.conditionings = GenerateWeight(Settings.Default.Conditioning.Split(','));
-            this.countries = GenerateWeight(Settings.Default.Countries.Split(';'));
-
-            //-----PRICE----
-
-            string[] pricesList = Settings.Default.Types.Split(',');
-
-            this.prices = new Dictionary<string, float[]>();
+            this.candyVar = env.Datas["Candy"];
             
-            foreach (string prices in pricesList)
+        }
+
+
+        public Model.Element GetRandWeight(Model.Element[] array)
+        {
+            Model.Element elem = null;
+
+
+            while (elem is null)
             {
-                string[] temp = prices.Split(';');
+                int rand = random.Next(100);
+                int index = random.Next(array.Length);
 
-                float[] tempArray = {
-                    float.Parse(temp[1], CultureInfo.InvariantCulture.NumberFormat),
-                    float.Parse(temp[2], CultureInfo.InvariantCulture.NumberFormat),
-                    float.Parse(temp[3], CultureInfo.InvariantCulture.NumberFormat) };
-                this.prices[temp[0]] = tempArray;
-                
+                if (array[index].Weight >= rand)
+                    elem = array[index];
             }
-
-
-
+            return elem;
         }
 
         private ConfElem[] GenerateWeight(string[] array)
@@ -73,76 +65,38 @@ namespace ProjetBI_DataGenerator
         {
             return array[random.Next(array.Length)];
         }
-
-        public float GetPrice(string index, string cond)
-        {
-            int condIndex = Array.IndexOf(Settings.Default.Conditioning.Split(','), cond);
-            return this.prices[index][condIndex];
-        }
-
         
-        private string GetRandWeight(ConfElem[] array)
-        {
-            string elem = " ";
-            
 
-            while(elem == " ")
-            {
-                int rand = random.Next(100);
-                int index = random.Next(array.Length);
-
-                if (array[index].Weight >= rand)
-                    elem = array[index].Value;
-            }
-            return elem;
-        }
-
-        public string Colors
+        public Candy candy
         {
             get
             {
-                return GetRandWeight(this.colors);
+                return (Candy)GetRandWeight(this.candyVar);
             }
         }
 
-        public string Conditionings
+        public Conditioning Conditionings
         {
             get
             {
-                return GetRandWeight(this.conditionings);
+                return (Conditioning)GetRandWeight(this.conditionings);
             }
         }
 
-        public string Textures
+        public Texture Textures
         {
             get
             {
-                return GetRandWeight(this.textures);
+                return (Texture)GetRandWeight(this.textures);
             }
         }
 
-        public string Types
+
+        public Variant Variants
         {
             get
             {
-                return GetRandWeight(this.types).Split(';')[0];
-            }
-        }
-
-        public string Variants
-        {
-            get
-            {
-                return GetRandWeight(this.variants);
-            }
-        }
-
-        public string[] CountriesAndShipping
-        {
-
-            get
-            {
-                return GetRandWeight(this.countries).Split(',');
+                return (Variant)GetRandWeight(this.variants);
             }
         }
     }

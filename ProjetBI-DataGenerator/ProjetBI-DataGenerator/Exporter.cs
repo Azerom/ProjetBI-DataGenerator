@@ -6,11 +6,82 @@ using System.Threading.Tasks;
 using System.IO;
 using ProjetBI_DataGenerator.Properties;
 using System.Windows.Forms;
+using ProjetBI_DataGenerator.Model;
 
 namespace ProjetBI_DataGenerator
 {
     class Exporter
     {
+        private Model.Element SelectRand(Model.Element[] array)
+        {
+            Random random = new Random();
+            Model.Element elem = null;
+
+
+            while (elem is null)
+            {
+                int rand = random.Next(100);
+                int index = random.Next(array.Length);
+
+                if (array[index].Weight >= rand)
+                    elem = array[index];
+            }
+            return elem;
+        }
+        
+        public static bool toSQL(RandomPicker rand, bool withDatas)
+        {
+            //Getting the form
+            MainForm form = (MainForm)MainForm.ActiveForm;
+            string SQLPath = Program.path + @"\SQL.sql";
+
+            try
+            {
+                File.Delete(SQLPath);
+                using (StreamWriter file = new StreamWriter(File.Open(SQLPath, FileMode.OpenOrCreate), Encoding.UTF8))
+                {
+
+                    if (withDatas)
+                    {
+                        foreach (KeyValuePair<string, Element[]> entry in Program.env.Datas)
+                        {
+                            foreach (Element elem in entry.Value)
+                            {
+                                file.WriteLine(elem.ToSQL());
+                            }
+                        }
+                    }
+
+
+                    for (int i = 0; i < form.GetMaxSize(); i++)
+                    {
+                        Order order = new Order(rand);
+
+                        //Foreach part in the active order
+                        foreach (OrderPart part in order.Parts)
+                        {
+                            
+                            //Write the line
+                            file.WriteLine(part.toSQL());
+
+                        }
+                        //Clean buffer memory
+                        file.Flush();
+
+                        file.WriteLine(order.ToSQL());
+                    }
+
+                };
+                return true;
+            }
+            catch (System.IO.IOException)
+            {
+
+                MessageBox.Show("Files already in use by another app");
+                return false;
+            }
+
+        }
         public static bool toCSV(RandomPicker randPick, bool header)
         {
             //Getting the form
@@ -51,15 +122,9 @@ namespace ProjetBI_DataGenerator
                         foreach (OrderPart part in order.Parts)
                         {
                             //Prepare the line
-                            var newPartLine = string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8}", 
+                            var newPartLine = string.Format("{0};{1};{2};{3};{4};{5};{6};{7}", 
                                 part.ID.ToString("N"),
                                 order.ID.ToString("N"), 
-                                part.ProductType, 
-                                part.Color, 
-                                part.Variant, 
-                                part.Texture, 
-                                part.Conditioning, 
-                                part.Price,
                                 part.Quantity);
 
                             //Write the line
@@ -73,7 +138,6 @@ namespace ProjetBI_DataGenerator
                         var newCommandLine = string.Format("{0};{1};{2};{3}", 
                             order.ID.ToString("N"), 
                             order.Country, 
-                            order.Shipping, 
                             order.Date.ToShortDateString());
                         orderFile.WriteLine(newCommandLine);
                         //Clean buffer memory

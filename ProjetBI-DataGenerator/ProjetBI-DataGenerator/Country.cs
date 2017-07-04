@@ -38,9 +38,9 @@ namespace ProjetBI_DataGenerator
         public override string ToSQL()
         {
             return "INSERT INTO COUNTRY " +
-                "(ID, LIB, ID_SHIPPING) VALUES (" +
-                this.ID + ", " +
-                this.Lib + ", " +
+                "(ID_COUNTRY, LIB, ID_SHIPPING) VALUES (" +
+                this.ID + ", '" +
+                this.Lib + "', " +
                 this.Ship + ");";
         }
     }

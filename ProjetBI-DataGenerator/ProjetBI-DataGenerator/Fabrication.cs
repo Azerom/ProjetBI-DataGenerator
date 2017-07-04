@@ -13,14 +13,17 @@ namespace ProjetBI_DataGenerator.Model
         public int IDMachine { get; set; }
         public int Delay { get; set; }
 
+        public int IDVariante { get; set; }
+
         public static int count = 0;
 
-        public Fabrication(int cadence, int idmachine, int delay)
+        public Fabrication(int cadence, int idmachine, int delay, int variante)
         {
             this.Cadence = cadence;
             this.IDMachine = idmachine;
             this.Delay = delay;
             this.ID = count;
+            this.IDVariante = variante;
             count++;
         }
 
@@ -31,7 +34,7 @@ namespace ProjetBI_DataGenerator.Model
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Fabrication((int)(long)data["Cadence"], (int)(long)data["IDMachine"], (int)(long)data["Delay"]);
+                output[i] = new Fabrication((int)(long)data["Cadence"], (int)(long)data["IdMachine"], (int)(long)data["Delays"], (int)(long)data["IdVariant"]);
                 i++;
             }
             return output;
@@ -40,11 +43,12 @@ namespace ProjetBI_DataGenerator.Model
         {
 
             return "INSERT INTO FABRICATION " +
-                "(ID_FABRICATION, CADENCE, ID_MACHINE, DELAYS) VALUES (" +
+                "(ID_FABRICATION, CADENCE, ID_MACHINE, DELAYS, ID_VARIANT) VALUES (" +
                 this.ID + ", " +
                 this.Cadence + ", " +
                 this.IDMachine + ", " +
-                this.Delay + ");";
+                this.Delay + ", " +
+                this.IDVariante + ");";
         }
     }
 }

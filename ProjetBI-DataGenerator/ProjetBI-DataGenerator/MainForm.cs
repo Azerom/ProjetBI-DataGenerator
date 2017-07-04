@@ -27,28 +27,10 @@ namespace ProjetBI_DataGenerator
 
         private void exportClick(object sender, EventArgs e)
         {
-            Config config = Config.Load(@"C:\Users\Azerom\Source\Repos\ProjetBI-DataGenerator\ProjetBI-DataGenerator\ProjetBI-DataGenerator\bin\Debug\config.json");
-
-            MessageBox.Show(JsonConvert.SerializeObject(config));
-
-            Dictionary<string, object>[] ShiptestData = new Dictionary<string, object>[1];
-            ShiptestData[0] = new Dictionary<string, object>();
-            ShiptestData[0].Add("Lib", "TestLib");
-            ShiptestData[0].Add("BoxCapacity", 42);
-            ShiptestData[0].Add("Capacity", 43);
-
-            Shipping[] ships = Shipping.Import(config.Shipping);
-
-            Dictionary<string, object>[] CountrytestData = new Dictionary<string, object>[1];
-            CountrytestData[0] = new Dictionary<string, object>();
-            CountrytestData[0].Add("Lib", "TestLib");
-            CountrytestData[0].Add("Shipping", 0);
-
-            Country[] country = Country.Import(config.Country);
-
-            MessageBox.Show(country[0].ToSQL());
-
             RandomPicker randPick = new RandomPicker();
+
+
+            
 
             if(Exporter.toCSV(randPick, m_checkHeader.Checked))
                 MessageBox.Show("Finish");
@@ -67,6 +49,18 @@ namespace ProjetBI_DataGenerator
         public long GetMaxSize()
         {
             return Convert.ToInt64(m_sizeController.Text);
+        }
+
+        private void m_sql_Click(object sender, EventArgs e)
+        {
+            RandomPicker randPick = new RandomPicker();
+            if(Exporter.toSQL(randPick, m_datasCheck.Checked))
+                MessageBox.Show("Finish");
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

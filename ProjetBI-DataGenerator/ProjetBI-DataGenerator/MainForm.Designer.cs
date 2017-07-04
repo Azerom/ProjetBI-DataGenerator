@@ -36,6 +36,8 @@
             this.m_LabelSizeControll = new System.Windows.Forms.Label();
             this.m_optionsTitle = new System.Windows.Forms.Label();
             this.m_Close = new System.Windows.Forms.Button();
+            this.m_sql = new System.Windows.Forms.Button();
+            this.m_datasCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // m_log
@@ -115,12 +117,39 @@
             this.m_Close.UseVisualStyleBackColor = false;
             this.m_Close.Click += new System.EventHandler(this.m_CloseClick);
             // 
+            // m_sql
+            // 
+            this.m_sql.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.m_sql.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.m_sql.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.m_sql.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_sql.Location = new System.Drawing.Point(210, 160);
+            this.m_sql.Name = "m_sql";
+            this.m_sql.Size = new System.Drawing.Size(47, 25);
+            this.m_sql.TabIndex = 9;
+            this.m_sql.Text = "Export to CSV";
+            this.m_sql.UseVisualStyleBackColor = false;
+            this.m_sql.Click += new System.EventHandler(this.m_sql_Click);
+            // 
+            // m_datasCheck
+            // 
+            this.m_datasCheck.AutoSize = true;
+            this.m_datasCheck.Location = new System.Drawing.Point(174, 97);
+            this.m_datasCheck.Name = "m_datasCheck";
+            this.m_datasCheck.Size = new System.Drawing.Size(79, 17);
+            this.m_datasCheck.TabIndex = 10;
+            this.m_datasCheck.Text = "With Datas";
+            this.m_datasCheck.UseVisualStyleBackColor = true;
+            this.m_datasCheck.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(286, 262);
+            this.Controls.Add(this.m_datasCheck);
+            this.Controls.Add(this.m_sql);
             this.Controls.Add(this.m_Close);
             this.Controls.Add(this.m_optionsTitle);
             this.Controls.Add(this.m_LabelSizeControll);
@@ -146,6 +175,8 @@
         private System.Windows.Forms.Label m_LabelSizeControll;
         private System.Windows.Forms.Label m_optionsTitle;
         private System.Windows.Forms.Button m_Close;
+        private System.Windows.Forms.Button m_sql;
+        private System.Windows.Forms.CheckBox m_datasCheck;
     }
 }
 
