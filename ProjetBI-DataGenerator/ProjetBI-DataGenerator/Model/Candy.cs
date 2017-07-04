@@ -16,6 +16,8 @@ namespace ProjetBI_DataGenerator.Model
 
         public int ID { get; set; }
 
+        public override string CSVHeader => "ID_CANDY;ID_TYPE;ID_COLOR;ID_VARIANT;ID_TEXTURE;ID_PACKAGING";
+
         public static int count = 0;
 
         public Candy(int type, int color, int variant, int texture, int packaging)
@@ -57,13 +59,23 @@ namespace ProjetBI_DataGenerator.Model
         public override string ToSQL()
         {
             return "INSERT INTO CANDY " +
-                "(ID_CANDY, ID_TYPE, ID_COLOR, ID_VARIANT, ID_TEXTURE, ID_PACKAGING) VALUES (" +
-                this.ID + ", " +
-                this.IdType + ", " +
-                this.IdColor + ", " +
-                this.IdVariant + ", " +
-                this.IdTexture + ", " +
-                this.IdPackaging + ");";
+                "(ID_CANDY, ID_TYPE, ID_COLOR, ID_VARIANT, ID_TEXTURE, ID_PACKAGING) VALUES (" + getString(", ") + ");";
+        }
+
+        private string getString(string sp)
+        {
+            return 
+                this.ID + sp +
+                this.IdType + sp +
+                this.IdColor + sp +
+                this.IdVariant + sp +
+                this.IdTexture + sp +
+                this.IdPackaging;
+        }
+
+        public override string ToCSV()
+        {
+            return getString(";");
         }
     }
 }

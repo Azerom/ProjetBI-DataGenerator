@@ -33,7 +33,14 @@ namespace ProjetBI_DataGenerator
             return "";
         }
 
-        public string toSQL()
+        public string ToCSV()
+        {
+            return this.ID.ToString() + ";" +
+                this.Quantity + ";" +
+                this.OrderID.ToString() + ";" +
+                this.candy.ID;
+        }
+        public string ToSQL()
         {
             return "INSERT INTO ORDERPART (ID_ORDERPART, QUANTITY, ID_ORDER, ID_CANDY) VALUES ('" +
                 this.ID.ToString() + "', " +
@@ -42,5 +49,6 @@ namespace ProjetBI_DataGenerator
                 this.candy.ID + ");";
         }
 
+        public static string CSVHeader => "ID_ORDERPART;QUANTITY;ID_ORDER;ID_CANDY";
     }
 }

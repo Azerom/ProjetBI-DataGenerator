@@ -41,5 +41,11 @@ namespace ProjetBI_DataGenerator.Model
                 this.ID + ", '" +
                 this.Lib + "');";
         }
+        public override string CSVHeader => "ID_TEXTURE;LIB";
+        public override string ToCSV()
+        {
+            return this.ID + ";" +
+                this.Lib;
+        }
     }
 }

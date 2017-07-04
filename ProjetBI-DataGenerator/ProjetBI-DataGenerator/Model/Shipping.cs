@@ -49,5 +49,14 @@ namespace ProjetBI_DataGenerator.Model
                 this.BoxCapacity + ", " +
                 this.Capacity + ");";
         }
+        public override string CSVHeader => "ID_SHIPPING;LIB;BOX_CAPACITY;CAPACITYS";
+        public override string ToCSV()
+        {
+
+            return this.ID + ";" +
+                this.Lib + ";" +
+                this.BoxCapacity + ";" +
+                this.Capacity;
+        }
     }
 }

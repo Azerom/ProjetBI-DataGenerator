@@ -48,5 +48,14 @@ namespace ProjetBI_DataGenerator.Model
                 this.Delays + ", " +
                 this.ID_Packaging + ");";
         }
+
+        public override string CSVHeader => "ID_CONDITIONING;CADENCE;DELAYS;ID_PACKAGING";
+        public override string ToCSV()
+        {
+            return this.ID + ";" +
+                this.Cadence + ";" +
+                this.Delays + ";" +
+                this.ID_Packaging;
+        }
     }
 }

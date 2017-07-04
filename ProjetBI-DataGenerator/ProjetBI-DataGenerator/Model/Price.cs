@@ -45,5 +45,12 @@ namespace ProjetBI_DataGenerator.Model
                 this.ID_Packaging + ", " +
                 this.ID_Type + ");";
         }
+        public override string CSVHeader => "VALEUR;ID_PACKAGING;ID_TYPE";
+        public override string ToCSV()
+        {
+            return this.Valeur.ToString("F2", CultureInfo.InvariantCulture) + ";" +
+                this.ID_Packaging + ";" +
+                this.ID_Type;
+        }
     }
 }

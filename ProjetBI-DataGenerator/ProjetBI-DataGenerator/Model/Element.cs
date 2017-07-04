@@ -10,6 +10,7 @@ namespace ProjetBI_DataGenerator.Model
     {
         private static Random rand = new Random();
         private int weight = rand.Next(100);
+        private Dictionary<string, object> data = new Dictionary<string, object>();
 
         public int Weight { get => weight; set => weight = value; }
 
@@ -18,6 +19,10 @@ namespace ProjetBI_DataGenerator.Model
             return null;
         }
 
+        public abstract string ToCSV();
+
         public abstract string ToSQL();
+
+        public abstract string CSVHeader { get;}
     }
 }

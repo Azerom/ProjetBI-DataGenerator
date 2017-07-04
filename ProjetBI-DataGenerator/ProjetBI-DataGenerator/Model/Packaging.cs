@@ -46,5 +46,13 @@ namespace ProjetBI_DataGenerator.Model
                 this.Quantity + ", " +
                 this.Quantity_Box + ");";
         }
+        public override string CSVHeader => "ID_PACKAGING;LIB;QUANTITY;QUANTITY_BOX";
+        public override string ToCSV()
+        {
+            return this.ID + ";" +
+                this.Lib + ";" +
+                this.Quantity + ";" +
+                this.Quantity_Box;
+        }
     }
 }

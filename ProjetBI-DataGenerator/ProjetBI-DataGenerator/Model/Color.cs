@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetBI_DataGenerator.Model
 {
-    class Variant : Element
+    class Color : Element
     {
         public int ID { get; set; }
         public string Lib { get; set; }
@@ -14,7 +14,7 @@ namespace ProjetBI_DataGenerator.Model
 
         public static int count = 0;
 
-        public Variant(string lib)
+        public Color(string lib)
         {
             this.Lib = lib;
             this.ID = count;
@@ -22,13 +22,13 @@ namespace ProjetBI_DataGenerator.Model
         }
 
         //Generate an array of Shipping base on an array of dictionary (each disctionary has the proprities of a Shipping)
-        public static new Variant[] Import(Dictionary<string, object>[] datas)
+        public static new Color[] Import(Dictionary<string, object>[] datas)
         {
-            Variant[] output = new Variant[datas.Length];
+            Color[] output = new Color[datas.Length];
             int i = 0;
             foreach (Dictionary<string, object> data in datas)
             {
-                output[i] = new Variant((string)data["Lib"]);
+                output[i] = new Color((string)data["Lib"]);
                 i++;
             }
             return output;
@@ -36,11 +36,20 @@ namespace ProjetBI_DataGenerator.Model
         public override string ToSQL()
         {
 
-            return "INSERT INTO VARIANT " +
-                "(ID_VARIANT, LIB) VALUES (" +
-                this.ID + ", '" +
-                this.Lib + "');";
+            return "INSERT INTO COLOR " +
+                            "(ID_COLOR, LIB) VALUES (" + getString(", ") + "');";
+        }
+
+        public override string CSVHeader => "ID_COLOR;LIB";
+
+        private string getString(string sp)
+        {
+            return this.ID + sp  + this.Lib;
+        }
+
+        public override string ToCSV()
+        {
+            return getString(";");
         }
     }
 }
-

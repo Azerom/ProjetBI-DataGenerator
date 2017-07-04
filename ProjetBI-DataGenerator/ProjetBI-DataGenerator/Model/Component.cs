@@ -46,5 +46,15 @@ namespace ProjetBI_DataGenerator.Model
                 this.Conditioning + ", " +
                 this.Palette + ");";
         }
+
+        public override string CSVHeader => "ID_COMPONENT;LIB;CONDITIONING;PALETTE";
+
+        public override string ToCSV()
+        {
+            return this.ID + ";" +
+                this.Lib + ";" +
+                this.Conditioning + ";" +
+                this.Palette;
+        }
     }
 }

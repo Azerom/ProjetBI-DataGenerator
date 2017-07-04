@@ -50,5 +50,14 @@ namespace ProjetBI_DataGenerator.Model
                 this.Delay + ", " +
                 this.IDVariante + ");";
         }
+        public override string CSVHeader => "ID_FABRICATION;CADENCE;ID_MACHINE;DELAYS;ID_VARIANT";
+        public override string ToCSV()
+        {
+            return this.ID + ";" +
+                this.Cadence + ";" +
+                this.IDMachine + ";" +
+                this.Delay + ";" +
+                this.IDVariante;
+        }
     }
 }

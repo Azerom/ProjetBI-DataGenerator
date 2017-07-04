@@ -12,7 +12,7 @@ namespace ProjetBI_DataGenerator
 {
     class RandomPicker
     {
-        private Element[] candyVar, colors, variants, textures, conditionings, countries;
+        private Element[] candyVar;
         
         private Random random;
 
@@ -74,30 +74,6 @@ namespace ProjetBI_DataGenerator
                 return (Candy)GetRandWeight(this.candyVar);
             }
         }
-
-        public Conditioning Conditionings
-        {
-            get
-            {
-                return (Conditioning)GetRandWeight(this.conditionings);
-            }
-        }
-
-        public Texture Textures
-        {
-            get
-            {
-                return (Texture)GetRandWeight(this.textures);
-            }
-        }
-
-
-        public Variant Variants
-        {
-            get
-            {
-                return (Variant)GetRandWeight(this.variants);
-            }
-        }
+        
     }
 }

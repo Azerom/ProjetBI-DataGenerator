@@ -43,5 +43,14 @@ namespace ProjetBI_DataGenerator
                 this.Lib + "', " +
                 this.Ship + ");";
         }
+
+        public override string CSVHeader => "ID_COUNTRY;LIB;ID_SHIPPING";
+
+        public override string ToCSV()
+        {
+            return this.ID + ";" +
+                this.Lib + ";" +
+                this.Ship;
+        }
     }
 }

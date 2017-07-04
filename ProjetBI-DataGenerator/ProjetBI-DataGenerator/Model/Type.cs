@@ -54,5 +54,15 @@ namespace ProjetBI_DataGenerator.Model
                 this.Shipping + ", "+
                 this.Generale + ");";
         }
+        public override string CSVHeader => "ID_TYPE;LIB;FABRICATION;CONDITIONING;SHIPPING;GENERALE";
+        public override string ToCSV()
+        {
+            return this.ID + ";" +
+                this.Lib + ";" +
+                this.Fabrication + ";" +
+                this.Conditioning + ";" +
+                this.Shipping + ";" +
+                this.Generale;
+        }
     }
 }

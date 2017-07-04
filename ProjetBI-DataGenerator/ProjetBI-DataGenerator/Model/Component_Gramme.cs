@@ -44,5 +44,14 @@ namespace ProjetBI_DataGenerator.Model
                 this.ID_Type + ", " +
                 this.ID_Component + ");";
         }
+
+        public override string CSVHeader => "VALEUR;ID_TYPE;ID_COMPONENT";
+
+        public override string ToCSV()
+        {
+            return this.Valeur + ";" +
+                this.ID_Type + ";" +
+                this.ID_Component;
+        }
     }
 }

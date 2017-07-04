@@ -77,6 +77,13 @@ namespace ProjetBI_DataGenerator
 
             return str;
         }
+        
+        public string ToCSV()
+        {
+            return this.ID.ToString() + ";" +
+                this.Date.ToShortDateString() + ";" +
+                this.Country;
+        }
 
         public string ToSQL()
         {
@@ -85,6 +92,8 @@ namespace ProjetBI_DataGenerator
                 this.Date.ToShortDateString() + "', " +
                 this.Country + ");";
         }
+        public static string CSVHeader => "ID_ORDER;DATE_ORDER;ID_COUNTRY";
+
     }
 }
 
